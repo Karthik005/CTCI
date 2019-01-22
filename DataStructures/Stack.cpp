@@ -34,7 +34,7 @@ class Stack{
         }
 
         void print_stack(){
-            for(int i = stack_.size()-1; i>=0;++i){
+            for(int i = stack_.size()-1; i>=0;--i){
                 cout << stack_[i]<<" ";
             }
             cout <<endl;

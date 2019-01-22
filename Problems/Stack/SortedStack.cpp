@@ -23,10 +23,10 @@ class SortedStack : public Stack<T> {
 
 int main(){
     SortedStack<int> sorted;
-    sorted.push(10);
-    sorted.push(9);
-    sorted.push(8);
-    sorted.push(7);
     sorted.push(6);
+    sorted.push(7);
+    sorted.push(8);
+    sorted.push(9);
+    sorted.push(10);
     sorted.print_stack();
 }
