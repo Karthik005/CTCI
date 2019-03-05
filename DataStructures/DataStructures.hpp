@@ -13,7 +13,7 @@ struct node
 template <typename T>
 class LinkedList
 {
-  private:
+  protected:
     node<T> *root;
     void deleteNext(node<T> *nodeval);
 
@@ -24,6 +24,7 @@ class LinkedList
     bool deleteNodeWithVal(T val);
     bool search(T val);
     void printList();
+    node<T> *getRoot();
     LinkedList();
     ~LinkedList();
 };

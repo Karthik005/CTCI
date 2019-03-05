@@ -84,3 +84,25 @@ void LinkedList<T>::printList(){
         iter = iter->next;
     }
 }
+
+template<typename T>
+node<T>* LinkedList<T>::getRoot(){
+    return root;
+}
+
+template <typename T>
+void LinkedList<T>::deleteNext(node<T> *nodeval){
+    node<T> *tmp;
+    if (nodeval == NULL){
+        tmp = root;
+        root = root->next;
+        delete tmp;
+        return;
+    }
+    tmp = nodeval->next;
+    if (tmp != NULL){
+        nodeval->val = tmp->val;
+        nodeval->next = tmp->next;
+    }
+    delete tmp;
+}

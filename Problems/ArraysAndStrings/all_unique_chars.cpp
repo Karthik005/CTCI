@@ -1,14 +1,14 @@
 #include<iostream>
 #include<string>
-#include<map>
+#include<set>
 using namespace std;
 
 bool all_unique_map(string s){
-    map<char, bool> char_map;
+    set<char> char_map;
 
     for(int i=0; i<s.size(); ++i){
         if (char_map.find(s[i]) == char_map.end()){
-            char_map[s[i]] = true;
+            char_map.insert(s[i]);
         } else {
             return false;
         }
