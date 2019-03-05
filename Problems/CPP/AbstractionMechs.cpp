@@ -8,6 +8,7 @@
  */
 
 #include<initializer_list>
+#include<string>
 
 
 // Classes
@@ -45,7 +46,7 @@ class complex
 
 class Vector
 {
-  private:
+  private: 
     double* elem; // elem points to an array of sz doubles
     int sz;
 
@@ -102,3 +103,109 @@ class Vector_container : public Container
  * Done at runtime using virtual function table or simply the vtbl
  * Has mapping between class and function to call
  */
+
+/*
+ * Copy constructors
+ * Must always override the default copy for complex datatypes (collections, composites)
+ * Otherwise will have problems with mutating members
+ * Must also implement for operator= (copy assignment)
+ * Vector(const Vector& a); // copy constr uctor
+ * Vector& operator=(const Vector& a); // copy assignment
+ * Move constructors
+ * Vector(Vector&& a); // move constructor
+ *  Vector& operator=(Vector&& a); // move assignment
+ *  &&- rvalue reference; rvalue: (cannot appear to the left of an assignment)
+ * Move constructor/= used auto matically if rvalue reference is used as argument
+ */
+
+/*
+ * Delete default copy and move operations for virtual classes to prevent 
+ * unwanted ops on pointers
+ * Shape(const Shape&) =delete; // no copy operations
+    Shape& operator=(const Shape&) =delete;
+    Shape(Shape&&) =delete; // no move operations
+    Shape& operator=(Shape&&) =delete;
+ * =delete supresses operations
+ */
+
+/*******************************************/
+
+/*
+ * Templates
+ * Generate templated classes (generic programming)
+ * Happens at compile time
+ * Arguments derived from calls
+ */
+
+template <typename Container, typename Value>
+Value sum(const Container &c, Value v)
+{
+  for (auto x : c)
+    v += x;
+  return v;
+}
+
+/************************************/
+/* Func Object
+ * function object (sometimes called a functor), which
+ * is used to define objects that can be called like functions
+ */
+template <typename T>
+class Less_than
+{
+  const T val; // value to compare against
+public:
+  Less_than(const T &v) : val(v) {}
+  bool operator()(const T &x) const { return x < val; } // call operator
+};
+
+template <typename C, typename P>
+int count(const C &c, P pred)
+{
+  int cnt = 0;
+  for (const auto &x : c)
+    if (pred(x)) // Can take any type functor object, any value
+      ++cnt;
+  return cnt;
+}
+
+/* Aliases
+ * using size_t = unsigned int; / alias
+ * Having alias will help in writing portable code
+ * Common for containers/templates to provide aliased for their internal stuff
+ */
+template <typename T>
+class Vector
+{
+public:
+  using value_type = T;
+  // ...
+};
+
+template <typename C>
+using Element_type = typename C::value_type;
+template <typename Container>
+void algo(Container &c)
+{
+  Vector<Element_type<Container>> vec; // keep results here
+  // ...
+}
+
+template <typename Key, typename Value>
+class Map
+{
+  namespace ksdjf {
+    int i = 0;
+  }
+  // ...
+};
+template <typename Value>
+using String_map = Map<string, Value>;
+String_map<int> m; // m is a Map<str ing,int>
+
+// Use concrete classes to represent simple concepts and performance - critical components
+// Resource Acquisition Is Initialization: Use constructor for resource acquisition and destructor
+// release
+//When designing a class hierarchy, distinguish between implementation inheritance and interface
+// inheritance
+// Return containers by value relying on move for efficiency

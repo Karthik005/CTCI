@@ -51,6 +51,7 @@ class Derived : public Base
     }
 };
 
+
 int main()
 {
     Base *bBase = new Base();
