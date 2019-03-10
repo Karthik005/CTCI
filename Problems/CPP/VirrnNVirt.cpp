@@ -24,7 +24,8 @@
 // Consider the following code :
 
 #include <iostream>
-    using namespace std;
+#include <initializer_list>
+    // using namespace std;
 
 class Base
 {
@@ -40,7 +41,12 @@ class Base
 };
 class Derived : public Base
 {
+    int a;
+    int b;
+
   public:
+
+    Derived() : a{1}, b{3} {}
     void NonVirtual()
     {
         cout << "Derived NonVirtual called.\n";

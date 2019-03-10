@@ -43,21 +43,21 @@ class LinkedList
 //     ~HashMap();
 // };
 
-template <typename T>
-class ArrayList
-{
-  private:
-    T* array;
-    int max_size;
-    int size;
-  public:
-    void append(T value);
-    bool search(T val);
-    void printList();
-    ArrayList();
-    ArrayList(int size);
-    ~ArrayList();
-};
+// template <typename T>
+// class ArrayList
+// {
+//   private:
+//     T* array;
+//     int max_size;
+//     int size;
+//   public:
+//     void append(T value);
+//     bool search(T val);
+//     void printList();
+//     ArrayList();
+//     ArrayList(int size);
+//     ~ArrayList();
+// };
 
 #endif
 
