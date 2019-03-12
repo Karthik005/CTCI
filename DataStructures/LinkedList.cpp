@@ -1,5 +1,6 @@
 #include"DataStructures.hpp"
 #include<iostream>
+
 template <typename T>
 node<T>* LinkedList<T>::createNode(T value){
     node<T>* newNode = new node<T>();
