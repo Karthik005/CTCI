@@ -94,12 +94,6 @@ class LinkedListAdv {
         size_--;
     }
 
-    ~LinkedListAdv() {
-        while (size_>0) {
-            delete_beginning();
-        }
-    }
-
     void printList()
     {
         node<T> *iter = root_;
@@ -112,6 +106,23 @@ class LinkedListAdv {
 
     void operator=(const LinkedListAdv<T> &c_list);
 
+    int find(const T& value) {
+        node<T>* iter = root_;
+        int current_ind = 0;
+        do {
+            if (iter->val == value) return current_ind;
+            iter = iter->next;
+            current_ind++;
+        } while(iter != nullptr);
+
+        return -1;
+    }
+
+    ~LinkedListAdv() {
+        while (size_ > 0) {
+            delete_beginning();
+        }
+    }
 };
 
 template<typename T>

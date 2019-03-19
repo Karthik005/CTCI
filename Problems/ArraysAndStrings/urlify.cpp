@@ -1,76 +1,59 @@
 #include<iostream>
-#include<deque>
+#include<queue>
 #include<string>
-#include<stdlib.h>
+#include<cmath>
 #include<string.h>
 
-using namespace std;
-
-void insert_string_at_index(char* arr, int ind, string s){
-    for (int i = 0; i<s.length(); ++i){
-        arr[ind+i] = s[i];
+void push_in_que(std::queue<char>& ch_que, const char * ch_ptr, int num_chars) {
+    for (int i =0 ; i<num_chars; ++i){
+        if (ch_ptr[i] == '_') {
+            ch_que.push('%');
+            ch_que.push('2');
+            ch_que.push('0');
+        } else {
+            ch_que.push(ch_ptr[i]);
+        }
     }
 }
 
-char pop_back(deque<char>& que){
-    char c = que[que.size() -1];
-    que.pop_back();
-    return c;
-}
+void urlify(char * str, int max_chars) {
+    std::queue<char> ch_que;
+    int i = 0;
+    char cur_ch;
 
-void urlify(char* s, int true_size){
-    deque<char> que;
-    char cur_char;
-    int ind=0;
-
-    while(ind < true_size){
-        // cout<<ind<<endl;
-        if (que.size() == 0){
-            if (s[ind] != '_'){
-                cout<<"Here index"<<ind<<endl;
-                ++ind;
-                continue;
+    do {
+        cur_ch = str[i];
+        if (ch_que.empty() && cur_ch != '_') {
+            ++i;
+            continue;
+        } else {
+            if (cur_ch == '_' && ch_que.empty()) {
+                push_in_que(ch_que, "20", 2);
+                str[i] = '%';
             } else {
-                cur_char = s[ind];
+                push_in_que(ch_que, &cur_ch, 1);
+                str[i] = ch_que.front();
+                ch_que.pop();
             }
-        } else{
-            cout<<"Here it reaches"<<endl;
-            cur_char = pop_back(que);
-            que.push_front(s[ind]);
+            ++i;
         }
-        
-        cout<<cur_char<<endl;
-        if (cur_char == '_'){
-            que.push_front(s[ind+1]);
-            if (ind+2 < true_size) que.push_front(s[ind+2]);
-            insert_string_at_index(s, ind, "%20");
-            cout<<"Size is "<<que.size()<<endl;
-            ind+=3;
-        }else{
-            s[ind] = cur_char;
-            ind++;
-        }
+    } while(i<max_chars);
+
+    while(!ch_que.empty()) {
+        str[i] = ch_que.front();
+        ch_que.pop();
+        ++i;
     }
-    while(que.size() >0){
-        cur_char =  pop_back(que);
-        if (cur_char == '_'){
-            insert_string_at_index(s, ind, "%20");
-            ind+=3;
-        }
-        else{
-            s[ind] = cur_char;
-            ind++;
-        }
-    }
+
 }
 
 int main(int argc, char const *argv[])
 {
     int true_size = atoi(argv[2]);
-    string st = argv[1];
+    std::string st = argv[1];
     char s[st.size()+50] = {0};
     strcpy(s, argv[1]);
     urlify(s,  true_size);
-    cout << "URLIFIED: " << s << endl;
+    std::cout << "URLIFIED: " << s << std::endl;
     return 0;
 }
