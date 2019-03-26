@@ -118,6 +118,10 @@ class LinkedListAdv {
         return -1;
     }
 
+    node<T>* get_root(){
+        return root_;
+    }
+
     ~LinkedListAdv() {
         while (size_ > 0) {
             delete_beginning();
@@ -130,8 +134,10 @@ void LinkedListAdv<T>::operator=(const LinkedListAdv<T> &c_list)
 {
     root_ = nullptr;
     size_ = c_list.size_;
+    
     if (c_list.size_ == 0)
         return;
+    
     node<T> *c_node = c_list.root_, *prev_node = root_;
     while (c_node != nullptr)
     {
@@ -149,7 +155,7 @@ void LinkedListAdv<T>::operator=(const LinkedListAdv<T> &c_list)
         c_node = c_node->next;
     }
 }
-
+/*
 int main(){
     LinkedListAdv<int> llist;
     for (int i = 0; i<30; ++i) {
@@ -162,3 +168,4 @@ int main(){
     llist.printList();
     clist.printList();
 }
+*/

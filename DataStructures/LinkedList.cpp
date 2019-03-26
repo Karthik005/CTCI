@@ -5,18 +5,18 @@ template <typename T>
 node<T>* LinkedList<T>::createNode(T value){
     node<T>* newNode = new node<T>();
     newNode->val = value;
-    newNode->next=NULL;
+    newNode->next=nullptr;
     return newNode;
 }
 
 template <typename T>
 void LinkedList<T>::insertEnd(node<T>* nodeval){
     node<T>* iter = root;
-    if (iter == NULL){
+    if (iter == nullptr){
         root = nodeval;
         return;
     }
-    while(iter->next != NULL){
+    while(iter->next != nullptr){
         iter = iter->next;
     }
     iter->next = nodeval;
@@ -32,11 +32,11 @@ void LinkedList<T>::insertBeginning(node<T> *nodeval)
 template <typename T>
 bool LinkedList<T>::deleteNodeWithVal(T value){
     if (root->val == value){
-        deleteNext(NULL);
+        deleteNext(nullptr);
         return true;
     }
     node<T>* iter = root;
-    while(iter!=NULL && iter->next != NULL){
+    while(iter!=nullptr && iter->next != nullptr){
         if (iter->next->val == value){
             deleteNext(iter);
             return true;
@@ -48,7 +48,7 @@ bool LinkedList<T>::deleteNodeWithVal(T value){
 template <typename T>
 bool LinkedList<T>::search(T val){
     node<T>* iter = root;
-    while (iter != NULL){
+    while (iter != nullptr){
         if (iter->val == val){
             return true;
         }
@@ -59,7 +59,7 @@ bool LinkedList<T>::search(T val){
 
 template <typename T>
 LinkedList<T>::LinkedList(){
-    root = NULL;
+    root = nullptr;
 }
 
 template <typename T>
@@ -70,7 +70,7 @@ LinkedList<T>::~LinkedList(){
 
 template<typename T>
 void deleteDownNodes(node<T>* root_node){
-    if (root_node->next == NULL){
+    if (root_node->next == nullptr){
         return;
     }
     deleteDownNodes(root_node->next);
@@ -80,7 +80,7 @@ void deleteDownNodes(node<T>* root_node){
 template <typename T>
 void LinkedList<T>::printList(){
     node<T>* iter = root;
-    while(iter != NULL){
+    while(iter != nullptr){
         std::cout<<iter->val<<" "<<std::endl;
         iter = iter->next;
     }
@@ -94,14 +94,14 @@ node<T>* LinkedList<T>::getRoot(){
 template <typename T>
 void LinkedList<T>::deleteNext(node<T> *nodeval){
     node<T> *tmp;
-    if (nodeval == NULL){
+    if (nodeval == nullptr){
         tmp = root;
         root = root->next;
         delete tmp;
         return;
     }
     tmp = nodeval->next;
-    if (tmp != NULL){
+    if (tmp != nullptr){
         nodeval->val = tmp->val;
         nodeval->next = tmp->next;
     }
