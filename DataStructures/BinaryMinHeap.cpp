@@ -1,25 +1,28 @@
-#include<vector>
 #include<iostream>
-#include "DataStructures.hpp"
+#include<queue>
+
+#include<DataStructures.hpp>
 
 using namespace std;
 
 template<typename T>
-class BinarySearchTree {
+class BinaryMinHeap {
     private:
     b_node<T> * root_;
     size_t size_;
 
 
-    bool search_rec(T value, b_node<T> * current_node) {
-        if (current_node == nullptr) return false;
-        cout << current_node->data << endl;
-        if (value == current_node->data) {
-            return true;
-        } else if (value < current_node->data) {
-            return search_rec(value, current_node->left);
-        } else if (value > current_node->data) {
-            return search_rec(value, current_node->right);
+    b_node<T> * find_right_most(bool return_parent, b_node<T> * current_node) {
+        
+    }
+
+    b_node<T> * bubble_up(b_node<T> * bubble_node, b_node<T> *current_node)
+    {
+        if (current_node == nullptr)
+            return false;
+        
+        if (current_node->left == bubble_node) {
+            
         }
     }
 
@@ -71,13 +74,3 @@ class BinarySearchTree {
     }
 
 };
-
-int main() {
-    BinarySearchTree<int> tree;
-    tree.insert(30);
-    tree.insert(10);
-    tree.insert(50);
-    tree.insert(20);
-    tree.insert(5);
-    cout << tree.search(15) << endl;
-}

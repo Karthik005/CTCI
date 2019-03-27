@@ -29,6 +29,21 @@ class LinkedList
     ~LinkedList();
 };
 
+template <typename T>
+struct b_node
+{
+  T data;
+  b_node<T> *left;
+  b_node<T> *right;
+
+  b_node(T data_val)
+  {
+    data = data_val;
+    left = nullptr;
+    right = nullptr;
+  }
+};
+
 // template <typename K, typename v>
 // class HashTable
 // {
