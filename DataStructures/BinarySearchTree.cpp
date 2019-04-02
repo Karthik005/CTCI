@@ -1,19 +1,8 @@
 #include<vector>
+#include<iostream>
+#include "DataStructures.hpp"
 
-template <typename T>
-struct b_node
-{
-    T data;
-    b_node<T> * left;
-    b_node<T> * right;
-
-    b_node(T data_val)
-    {
-        data = data_val;
-        left = nullptr;
-        right = nullptr;
-    }
-};
+using namespace std;
 
 template<typename T>
 class BinarySearchTree {
@@ -21,26 +10,41 @@ class BinarySearchTree {
     b_node<T> * root_;
     size_t size_;
 
-    bool search_rec(T value, b_node<T> * parent, b_node<T> * store_nearest) {
-        if (parent == nullptr) return false;
-        if (value == parent->data ) {
-            store_nearest = parent;
+
+    bool search_rec(T value, b_node<T> * current_node) {
+        if (current_node == nullptr) return false;
+        cout << current_node->data << endl;
+        if (value == current_node->data) {
             return true;
-        } else if (parent->left == nullptr && parent->right== nullptr) {
-            store_nearest = parent;
-            return false;
-        } else if (value < parent->data) {
-            if (!search_rec(value, parent->left, store_nearest)) {
-                
-            }
-        } else if (value > parent->data) {
-            return search_rec(value, parent->right, store_nearest);
+        } else if (value < current_node->data) {
+            return search_rec(value, current_node->left);
+        } else if (value > current_node->data) {
+            return search_rec(value, current_node->right);
         }
     }
 
-    void insert_rec(T value, b_node<T>)
-    {
+    b_node<T> * insert_rec(T value, b_node<T> * current_node) {
+        if (current_node == nullptr) {
+            size_++;
+            return create_node(value);
+        } else if (value < current_node->data) {
+            current_node->left = insert_rec(value, current_node->left);
+        } else if (value > current_node->data) {
+            current_node -> right = insert_rec(value, current_node->right);
+        }
+        return current_node;
+    }
 
+    void delete_children(b_node<T> * current_node) {
+        if (current_node == nullptr) {
+            return;
+        } else {
+            delete_children(current_node->left);
+            delete_children(current_node->right);
+            delete current_node->left;
+            delete current_node->right;
+            return;
+        }
     }
 
   public:
@@ -49,6 +53,31 @@ class BinarySearchTree {
         root_ = nullptr;
     }
 
+    bool search(T value) {
+        return search_rec(value, root_);
+    }
 
+    void insert(T value) {
+        root_ = insert_rec(value, root_);
+    }
+
+    b_node<T> * create_node(T value) {
+        return new b_node<T>(value);
+    }
+
+    ~BinarySearchTree(){
+        delete_children(root_);
+        delete root_;
+    }
 
 };
+
+int main() {
+    BinarySearchTree<int> tree;
+    tree.insert(30);
+    tree.insert(10);
+    tree.insert(50);
+    tree.insert(20);
+    tree.insert(5);
+    cout << tree.search(15) << endl;
+}
