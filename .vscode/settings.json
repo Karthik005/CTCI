@@ -4,4 +4,5 @@
         "stdexcept": "cpp",
         "set": "cpp"
     },
+    "C_Cpp.intelliSenseEngineFallback": "Enabled",
 }
