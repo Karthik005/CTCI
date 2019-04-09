@@ -18,8 +18,6 @@ class LinkedListAdv {
 
     LinkedListAdv() : root_{nullptr}, size_{0} {}
 
-
-
     LinkedListAdv(const LinkedListAdv& c_list) : root_{nullptr}, size_{c_list.size_} {
         if (c_list.size_ == 0) return;
         node<T> *c_node = c_list.root_, *prev_node = root_;
@@ -99,9 +97,10 @@ class LinkedListAdv {
         node<T> *iter = root_;
         while (iter != nullptr)
         {
-            std::cout << iter->val << " " << std::endl;
+            std::cout << iter->val << " ";
             iter = iter->next;
         }
+        std::cout<<std::endl;
     }
 
     void operator=(const LinkedListAdv<T> &c_list);
