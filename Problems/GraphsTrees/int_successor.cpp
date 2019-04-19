@@ -9,8 +9,14 @@ struct bp_node {
 };
 
 bp_node<int>* get_successor(bp_node<int>* root) {
-    if (root->parent == nullptr){
-        return 
+    if (root->parent == nullptr) {
+        return nullptr;
+    }
+    
+    if (root == root->parent->left){
+        return root->parent;
+    } else {
+        return root->parent->parent;
     }
 }
 
