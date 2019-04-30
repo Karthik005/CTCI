@@ -7,6 +7,7 @@ template <typename T> struct v_pair;
 template<typename T>
 struct g_node {
     T value;
+    bool visited;
     vector<v_pair<T>> adj_list;
 
     void push_node(g_node * neighbr, int weight=1) {
@@ -29,8 +30,7 @@ class Graph {
     public:
     
     g_node<T> * create_node(T value) {
-        g_node<T> * ret_node = new g_node<T>();
-        ret_node->value = value;
+        g_node<T> * ret_node = new g_node<T>{value, false};
         return ret_node;
     }
 
