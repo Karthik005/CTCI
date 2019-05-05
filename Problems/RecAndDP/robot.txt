@@ -1,0 +1,20 @@
+#include <iostream>
+#include <vector>
+#include <pair>
+
+using namespace std;d
+
+bool find_path(const vector<vector<bool>>& grid, vector<pair<int,int>>& current_path,
+int row, int col, int& path_ind) {
+    int num_rows = grid.size()-1, num_cols = grid[0].size()-1;
+    if (row == grid.size()-1 && col == grid[0].size()-1) {
+        return true;
+    }
+
+    int old_ind = path_ind;
+    if (col+1 < num_cols && grid[row][col+1]) {
+        current_path[path_ind] = 
+        if (!find_path(grid, current_path, col+1))
+    }
+
+}
