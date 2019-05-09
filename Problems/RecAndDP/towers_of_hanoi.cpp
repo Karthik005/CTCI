@@ -8,28 +8,35 @@ void move_disc(stack<int>& one, stack<int>& two) {
     one.pop();
 }
 
-void move_ndiscs(stack<int>& start, stack<int>& mid, stack<int>& end, int n)
-{
-    cout << "enters here" << endl;
-    if (n == 0) return;
-    else if (n == 1) {
-        move_disc(start, end);
-        return;        
-    }
+void move_ndiscs(stack<int> &start, stack<int> &mid, stack<int> &end, int cur_dsc);
 
+void execute_toh(stack<int> &start, stack<int> &mid, stack<int> &end, int n)
+{
+    for (int i = 1; i <= n; ++i) {
+        move_ndiscs(start, mid, end, i);
+    }
+}
+
+void move_ndiscs(stack<int> &start, stack<int> &mid, stack<int> &end, int cur_dsc)
+{
+    if (cur_dsc == 0) return;
+    else if (cur_dsc == 1) {
+        move_disc(start, end);
+        return;
+    }
     move_disc(start, mid);
-    move_ndiscs(end, mid, start, n-1);
+    execute_toh(end, mid, start, cur_dsc-1);
     move_disc(mid, end);
-    move_ndiscs(start, mid, end, n-1);
+    execute_toh(start, mid, end, cur_dsc-1);
 
 }
 
 int main() {
     stack<int> start, mid, end;
-    for (int i = 1; i < 5; ++i) {
+    for (int i = 10; i >= 1; --i) {
         start.push(i);
     }
-    move_ndiscs(start, mid, end, 4);
+    execute_toh(start, mid, end, start.size());
     while(!end.empty()) {
         cout << end.top() <<" ";
         end.pop();
