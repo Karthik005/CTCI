@@ -2,13 +2,15 @@
 #define __ABSTRACT_SORTER__
 
 #include <vector>
+
+template<typename T>
 class AbstractSorter
 {
   private:
     /* data */
   public:
     AbstractSorter(/* args */){};
-    virtual std::vector<int> sort(std::vector<int>) = 0;
+    virtual void sort(std::vector<T>&, bool reverse=false) = 0;
     ~AbstractSorter(){};
 };
 
