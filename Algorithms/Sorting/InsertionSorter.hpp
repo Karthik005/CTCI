@@ -1,4 +1,5 @@
 #include<vector>
+#include<iostream>
 #include "AbstractSorter.hpp"
 
 template <typename T>
@@ -22,18 +23,17 @@ void InsertionSorter<T>::sort(std::vector<T>& src_vec, bool reverse){
         return;
     }
     
-    T& key = src_vec[0];
     int dec;
-
     for (size_t i = 1; i < src_vec.size(); i++)
     {
-        key = src_vec[i];
+        T key = src_vec[i];
         dec = i-1;
-        while (dec > -1 &&
-              ((!reverse && key < src_vec[dec]) ||
-              (reverse && key > src_vec[dec])))
+        while ((dec > -1) && 
+              ((!reverse && (key < src_vec[dec])) ||
+              (reverse && (key > src_vec[dec]))))
         {
-            src_vec[dec+1] = src_vec[dec];
+            int val = src_vec[dec];
+            src_vec[dec+1] = val;   
             dec--;
         }
         src_vec[dec+1] = key;
