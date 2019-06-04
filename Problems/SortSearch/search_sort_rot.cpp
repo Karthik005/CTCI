@@ -34,8 +34,9 @@ bool mod_bin_search(int num, int cent_ind, vector<int> rotated_arr) {
         int mod_low = get_adj_ind(low, cent_ind, size);
         int mod_high = get_adj_ind(high, cent_ind, size);
         int mid = (low+high)/2;
-        int mod_mid = get_adj_ind((low+high)/2, cent_ind, size);
-
+        int mod_mid = get_adj_ind(mid, cent_ind, size);
+        cout << "HERE "<<mod_mid << endl;
+        
         if (rotated_arr[mod_mid] > num) {
             high = mid-1;
         } else if (rotated_arr[mod_mid] < num) {
