@@ -1,0 +1,74 @@
+#include <iostream>
+#include <vector>
+#include <utility>
+
+using namespace std;
+
+pair<int,int> search_matrix_dep(const vector<vector<int>>& matrix, int num) {
+    if (matrix.size() == 0 || matrix[0].size() == 0){
+        return pair<int,int>{-1,-1};
+    }
+    
+    int row_low = 0, col_low = 0;
+    int row_high = matrix.size()-1, col_high = matrix[0].size() - 1;
+
+    while (row_low <= row_high) {
+        int row_center = (row_low + row_high)/2;
+        int cent_num = matrix[row_center][0];
+
+        if (cent_num < num) {
+            row_low = row_center + 1;
+        } else if (cent_num > num) {
+            row_high = row_center -1;
+        } else {
+            return pair<int,int>{row_center, 0};
+        }
+    }
+
+    // cout << "Reaches here " << matrix[row_low][0] << endl;
+
+    if (row_low > 0 && (row_low == matrix.size() || matrix[row_low][0] > num)) {
+        row_low--;
+    }
+
+    while (col_low <= col_high)
+    {
+        int col_center = (col_low + col_high) / 2;
+        int cent_num = matrix[row_low][col_center];
+
+        if (cent_num < num)
+        {
+            col_low = col_center + 1;
+        }
+        else if (cent_num > num)
+        {
+            col_high = col_center - 1;
+        }
+        else
+        {
+            cout << cent_num<< " " << num << endl;
+            return pair<int, int>{row_low, col_center};
+        }
+    }
+
+    return pair<int,int>{-1,-1};
+}
+
+
+pair<int,int> search_matrix(const vector<vector<int>>& matrix, int start_row, 
+                            int end_row, int start_col, int end_col, int num) {
+    if (start_col == end_col && start_row == end_row ) {
+        return pair<int,int>{start_row, end_row}
+    }
+}
+
+
+int main() {
+    vector<vector<int>> arr = {
+        {1,2,3},
+        {4,5,6},
+        {7,8,9}
+    };
+    pair<int,int> point = search_matrix(arr, 10);
+    cout << point.first<<","<<point.second << endl;
+}

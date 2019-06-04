@@ -11,3 +11,13 @@ void print_vec(vector<T> vec) {
     }
     cout << endl;
 }
+
+template <typename T>
+void print_matrix(vector<vector<T>> vec)
+{
+    for (auto &i : vec)
+    {
+        print_vec(i);
+    }
+    cout << endl;
+}
