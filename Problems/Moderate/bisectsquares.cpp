@@ -12,7 +12,7 @@ struct Line {
     float slope,intercept;
 };
 
-float int get_average (const float& a, const float& b, const float& c, const float& d) {
+float get_average (const float& a, const float& b, const float& c, const float& d) {
     return (a+b+c+d)/4;
 }
 
