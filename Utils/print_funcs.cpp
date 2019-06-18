@@ -2,6 +2,7 @@
 #include<vector>
 #include<utility>
 #include<stack>
+#include<unordered_map>
 
 using namespace std;
 
@@ -26,4 +27,11 @@ void print_matrix(const vector<vector<T>>& vec)
 template <typename A,typename B>
 void print_pair(const pair<A,B>& a) {
     cout << "(" << a.first <<"," << a.second << ")" <<endl;
+}
+
+template<typename A, typename B>
+void print_map(const unordered_map<A,B>& map) {
+    for (const auto& pr : map) {
+        print_pair<A,B>(pr); 
+    }
 }
