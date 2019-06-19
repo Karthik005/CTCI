@@ -3,6 +3,7 @@
 
 #include "../../DataStructures/DataStructures.hpp"
 #include <vector>
+#include <iostream>
 
 b_node<int> *create_emplace(int val)
 {
