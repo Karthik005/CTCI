@@ -1,4 +1,4 @@
-#include "../DataStructures/Graph.cpp"
+#include "../DataStructures/Graph.hpp"
 
 #include <iostream>
 #include <queue>

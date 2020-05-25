@@ -1,14 +1,14 @@
-CFLAGS = -Wall -Werror
-CXX = g++
+CC = g++
 
-all: SortingDriver.cpp
-	$(CXX) $(CFLAGS) SortingDriver.cpp -o sort_test
+CFLAGS  = -Wall -Werrror
 
-# SortingDriver.o: SortingDriver.cpp
-# 	$(CXX) -c InsertionSorter.cpp
+# the build target executable:
+TARGET = sort_driver
 
-# InsertionSorter.o: InsertionSorter.cpp
-# 	$(CXX) -c InsertionSorter.cpp
+all: $(TARGET)
 
-# MergeSorter.o: MergeSorter.cpp
-# 	$(CXX) -c MergeSorter.cpp
+$(TARGET): $(TARGET).cpp
+$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c
+
+clean:
+$(RM) $(TARGET)
