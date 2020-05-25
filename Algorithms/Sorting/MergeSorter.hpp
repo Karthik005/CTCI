@@ -28,7 +28,8 @@ void MergeSorter<T>::sort(std::vector<T>& src_vec, bool reverse)
 }
 
 template<typename T>
-void MergeSorter<T>::merge(std::vector<T>& src_vec, int low, int mid, int high, bool reverse){
+void MergeSorter<T>::merge(std::vector<T>& src_vec, int low, int mid, int high, bool reverse)
+{
     
     T low_arr[mid-low+1];
     T hi_arr[high-mid];
