@@ -1,7 +1,7 @@
-#include"DataStructures.hpp"
-#include "LinkedList.cpp"
-#include "ArrayList.cpp"
 #include <iostream>
+
+#include"LinkedList.hpp"
+#include "ArrayList.hpp"
 
 int main_LL(int argc, char const *argv[])
 {
@@ -15,12 +15,11 @@ int main_LL(int argc, char const *argv[])
 
 
 int main(){
-    ArrayList<int> intList = ArrayList<int>(2);
-    intList.append(10);
-    intList.append(12);
-    intList.append(12);
-    intList.append(12);
-    intList.append(12);
-    intList.printList();
-    std::cout<<intList.search(10)<<endl;
+    ArrayList<int> intList({2});
+    intList.push_back(10);
+    intList.push_back(12);
+    intList.push_back(12);
+    intList.push_back(12);
+    intList.push_back(12);
+    std::cout<<intList.search(10)<<std::endl;
 }

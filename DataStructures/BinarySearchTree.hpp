@@ -1,10 +1,13 @@
+#ifndef DSA_DS_BST_H_
+#define DSA_DS_BST_H_
+
 #include<vector>
 #include<iostream>
 #include "DataStructures.hpp"
 
 using namespace std;
 
-template<typename T>
+template<class T>
 class BinarySearchTree {
     private:
     b_node<T> * root_;
@@ -72,12 +75,4 @@ class BinarySearchTree {
 
 };
 
-int main() {
-    BinarySearchTree<int> tree;
-    tree.insert(30);
-    tree.insert(10);
-    tree.insert(50);
-    tree.insert(20);
-    tree.insert(5);
-    cout << tree.search(15) << endl;
-}
+#endif //DSA_DS_BST_H_

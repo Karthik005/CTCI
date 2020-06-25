@@ -1,14 +1,16 @@
+#ifndef DSA_DS_GRAPH_H_
+#define DSA_DS_GRAPH_H_
+
 #include<vector>
 
-using namespace std;
 
-template <typename T> struct v_pair;
+template <class T> struct v_pair;
 
-template<typename T>
+template<class T>
 struct g_node {
     T value;
     bool visited;
-    vector<v_pair<T>> adj_list;
+    std::vector<v_pair<T>> adj_list;
 
     void push_node(g_node * neighbr, int weight=1) {
         adj_list.push_back(v_pair<T>{neighbr, weight});
@@ -16,16 +18,16 @@ struct g_node {
 
 };
 
-template<typename T>
+template<class T>
 struct v_pair {
     g_node<T>* vert;
     int dist;
 };
 
-template<typename T>
+template<class T>
 class Graph {
     private:
-    vector<g_node<T>*> nodes;
+    std::vector<g_node<T>*> nodes;
     
     public:
     
@@ -56,3 +58,5 @@ class Graph {
         }
     }
 };
+
+#endif // DSA_DS_GRAPH_H_

@@ -1,12 +1,12 @@
-#include "DataStructures.hpp"
+#ifndef DSA_DS_STACK_H_
+#define DSA_DS_STACK_H_
+
 #include<vector>
 
-using namespace std;
-
-template<typename T>
+template<class T>
 class Stack{
     protected:
-        vector<T> stack_;
+        std::vector<T> stack_;
     public:
         Stack(){
         }
@@ -41,3 +41,5 @@ class Stack{
         }
 
 };
+
+#endif // DSA_DS_STACK_H_

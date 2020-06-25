@@ -1,3 +1,6 @@
+#ifndef DSA_DS_STRINGBUILDER_H_
+#define DSA_DS_STRINGBUILDER_H_
+
 #include <vector>
 #include <string>
 #include <iostream>
@@ -54,3 +57,5 @@ int main(){
     std::cout << builder.to_string() << builder.length() << std::endl;
     return 0;
 }
+
+#endif // DSA_DS_STRINGBUILDER_H_

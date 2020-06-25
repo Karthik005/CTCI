@@ -1,11 +1,9 @@
-
-
-#ifndef TREE_NODE
-#define TREE_NODE
+#ifndef DSA_DS_TREENODE_H_
+#define DSA_DS_TREENODE_H_
 
 #include <vector>
 
-template<typename T>
+template<class T>
 struct t_node{
     T data;
     vector<T> children;
@@ -15,5 +13,4 @@ struct t_node{
     }
 };
 
-
-#endif
+#endif // DSA_DS_TREENODE_H_

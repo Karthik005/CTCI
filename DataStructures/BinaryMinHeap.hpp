@@ -1,8 +1,11 @@
+#ifndef DSA_DS_BINMINHEAP_H_
+#define DSA_DS_BINMINHEAP_H_
+
 #include<stdexcept>
 
 using namespace std;
 
-template<typename T>
+template<class T>
 class BinaryMinHeap {
     private:
     T * heap_arr_;
@@ -79,7 +82,6 @@ class BinaryMinHeap {
 
     }
 
-    
-
 };
 
+#endif // DSA_DS_BINMINHEAP_H_

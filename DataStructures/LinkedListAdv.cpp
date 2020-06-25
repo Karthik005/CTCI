@@ -1,8 +1,12 @@
-#include "DataStructures.hpp"
+#ifndef DSA_DS_LLADV_H_
+#define DSA_DS_LLADV_H_
+
 #include<stdexcept>
 #include<iostream>
 
-template<typename T>
+#include "Node.hpp"
+
+template<class T>
 class LinkedListAdv {
 
     private:
@@ -154,17 +158,5 @@ void LinkedListAdv<T>::operator=(const LinkedListAdv<T> &c_list)
         c_node = c_node->next;
     }
 }
-/*
-int main(){
-    LinkedListAdv<int> llist;
-    for (int i = 0; i<30; ++i) {
-        llist.insert_end(llist.create_node(i));
-    }
-    LinkedListAdv<int> clist(llist);
-    for (int i = 0 ; i<5; ++i) {
-        llist.delete_beginning();
-    }
-    llist.printList();
-    clist.printList();
-}
-*/
+
+#endif // DSA_DS_LLADV_H_

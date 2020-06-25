@@ -1,7 +1,10 @@
+#ifndef DSA_DS_FIXEDSTACK_H_
+#define DSA_DS_FIXEDSTACK_H_
+
 #include <vector>
 #include <stdexcept>
 
-template <typename T>
+template <class T>
 class FixedStack {
     private:
     std::vector<T> stack_arr_;
@@ -62,4 +65,4 @@ class FixedStack {
     }
 };
 
-int main(){}
+#endif // DSA_DS_FIXEDSTACK_H_

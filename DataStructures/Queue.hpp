@@ -1,9 +1,12 @@
+#ifndef DSA_DS_QUEUE_H_
+#define DSA_DS_QUEUE_H_
+
 #include<vector>
 #include<stdexcept>
 #include<iostream>
 
 
-template<typename T>
+template<class T>
 class Queue{
     private:
     std::vector<T> que_;
@@ -72,3 +75,5 @@ class Queue{
     }
 
 };
+
+#endif // DSA_DS_QUEUE_H_
